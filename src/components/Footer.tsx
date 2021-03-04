@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () =>
-    <footer>-FOOTER COMPONENT-</footer>;
+const Footer = ({author, date}: any) =>
+    <footer>{author}&copy; {date}</footer>;
 
 export default Footer;
