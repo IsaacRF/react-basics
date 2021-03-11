@@ -3,12 +3,18 @@ import React from 'react'
 export interface Product {
     id: number,
     name: string,
-    price: number
+    price: number,
+    cart: any,
+    setCart: any
 }
 
-const Product: React.FC<Product> = ({id, name, price}) => {
+const Product: React.FC<Product> = ({id, name, price, cart, setCart}) => {
     const selectProduct = (id: number) => {
         console.log(`selectProduct(${id})`);
+        setCart([
+            ...cart,
+            {id, name, price}
+        ]);
     }
 
     return (

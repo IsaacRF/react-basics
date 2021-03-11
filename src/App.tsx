@@ -13,6 +13,9 @@ function App() {
     { id: 4, name: "Test Product 4", price: 20 },
   ]);
 
+  //Shopping cart state
+  const [ cart, setCart ] = useState([]);
+
   const date = new Date().getFullYear();
 
   return (
@@ -26,6 +29,8 @@ function App() {
           id={product.id}
           name={product.name}
           price={product.price}
+          cart={cart}
+          setCart={setCart}
         />
       ))}
 
