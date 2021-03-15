@@ -1,32 +1,49 @@
-import React from 'react'
+import React from "react";
 
-export interface Product {
-    id: number,
-    name: string,
-    price: number,
-    cart: any,
-    setCart: any
+export interface ProductProps {
+  id: number;
+  name: string;
+  price: number;
+  isInCartContext?: boolean;
+  cart: ProductProps[];
+  setCart: Function;
 }
 
-const Product: React.FC<Product> = ({id, name, price, cart, setCart}) => {
-    const selectProduct = (id: number) => {
-        console.log(`selectProduct(${id})`);
-        setCart([
-            ...cart,
-            {id, name, price}
-        ]);
-    }
+const Product: React.FC<ProductProps> = ({ id, name, price, isInCartContext, cart, setCart }) => {
+  /**
+   * Adds a product to the cart
+   * @param id Product Id
+   */
+  const selectProduct = (id: number) => {
+    console.log(`selectProduct(${id})`);
+    setCart([...cart, { id, name, price }]);
+  };
 
-    return (
-        <div>
-            <h2>{name}</h2>
-            <p>{price}$</p>
-            <button
-                type="button"
-                onClick={() => selectProduct(id) }
-            >Comprar</button>
-        </div>
-     );
-}
+  /**
+   * Remove a product from cart
+   * @param id Product Id
+   */
+  const removeProduct = (id: number) => {
+    const products = cart.filter(product => product.id !== id);
+    setCart(products);
+  };
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{price}$</p>
+
+      {!isInCartContext ? (   //FIXME: Need another condition to differ between product list and cart
+        <button type="button" onClick={() => selectProduct(id)}>
+          Buy
+        </button>
+      ) : (
+        <button type="button" onClick={() => removeProduct(id)}>
+          Remove
+        </button>
+      )}
+    </div>
+  );
+};
 
 export default Product;

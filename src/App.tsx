@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Product from "./components/Product";
+import React, { Fragment, useState } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Product from './components/Product';
+import Cart from './components/Cart';
 
 function App() {
   //Products list state
@@ -33,6 +34,8 @@ function App() {
           setCart={setCart}
         />
       ))}
+
+      <Cart cart={cart} setCart={setCart} />
 
       <Footer author="Isaac R.F." date={date} />
     </Fragment>
