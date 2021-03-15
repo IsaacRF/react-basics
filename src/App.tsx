@@ -31,11 +31,12 @@ function App() {
           name={product.name}
           price={product.price}
           cart={cart}
-          setCart={setCart}
-        />
+          setCart={setCart} />
       ))}
 
-      <Cart cart={cart} setCart={setCart} />
+      <Cart
+        cart={cart}
+        setCart={setCart} />
 
       <Footer author="Isaac R.F." date={date} />
     </Fragment>
